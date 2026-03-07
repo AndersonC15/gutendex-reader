@@ -1,6 +1,8 @@
 package AndersonC15.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +21,8 @@ public class Libro {
     private Long id;
 
     @NotNull(message = "El título no puede ser nulo")
-    @NotNull(message = "Este campo no debe de ir vacio")
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Este campo no debe de ir vacio")
+    @Column(nullable = false, unique = true, length = 255)
     private String titulo;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -28,7 +30,8 @@ public class Libro {
     @NotNull(message = "Ingresar la palabra (Ninguno) en el campo autor si el libro no tiene autor")
     private Autor autor;
 
-    @Column(length = 5)
+    @Size(min = 1, max = 5, message = "Escriba por favor la abreviacion")
+    @Column(length = 5, nullable = false)
     private String idioma;
 
     @Column(name = "numero_descargas")

@@ -1,6 +1,8 @@
 package AndersonC15.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,12 +24,17 @@ public class Autor {
 
     @NotNull(message = "El nombre de el autor es obligatorio")
     @NotBlank(message = "Este campo no debe de ir vacio")
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 255)
     private String nombre;
 
+    @Min(value = 1000, message = "Año de nacimiento invalido")
+    @Max(value = 2026, message = "Año de nacimiento no puede ser futuro")
     @Column(name = "fecha_nacimiento")
     private Integer fechaNacimiento;
 
+
+    @Min(value = 1000, message = "Año de fallecimiento invalido")
+    @Max(value = 2026, message = "Año de fallecimiento no puede ser futuro")
     @Column(name = "fecha_muerte")
     private Integer fechaMuerte;
 
