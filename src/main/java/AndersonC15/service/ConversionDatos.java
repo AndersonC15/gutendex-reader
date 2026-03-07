@@ -5,12 +5,9 @@ import AndersonC15.entity.Autor;
 import AndersonC15.entity.Libro;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
 
 @Service
 public class ConversionDatos {
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public Libro convertirALibro(JsonNode nodoLibro) {
         Libro libro = new Libro();

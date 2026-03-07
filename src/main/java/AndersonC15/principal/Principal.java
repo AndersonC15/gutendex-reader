@@ -9,7 +9,6 @@ import AndersonC15.service.ConversionDatos;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -32,6 +31,7 @@ public class Principal {
         this.autorRepository = autorRepository;
     }
 
+    //Menu para interactuar por consola, hace llamado a todos los otros metodos
     public void mostrarMenu() {
         int opcion = -1;
 
@@ -95,7 +95,7 @@ public class Principal {
             JsonNode resultados = root.get("results");
 
             if (resultados.isEmpty()) {
-                System.out.println("\n❌ Libro no encontrado en la API Gutendex");
+                System.out.println("\n❌ Libro no encontrado en la API");
                 return;
             }
 
